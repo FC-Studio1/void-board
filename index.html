@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子教室|首页</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(to right, #f0f0f0, #e6e6e6);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh;
+            /* Vertically center content */
+        }
+
+        .header {
+            font-size: 32px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        th {
+            font-weight: bold;
+            color: #666666;
+        }
+
+        td:nth-child(1) {
+            font-weight: bold;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            color: #666666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header" id="systemTime"></div>
+        <div class="card">
+            <table>
+                <tr>
+                    <th>节次</th>
+                    <th>周一</th>
+                    <th>周二</th>
+                    <th>周三</th>
+                    <th>周四</th>
+                    <th>周五</th>
+                </tr>
+                <tr>
+                    <td>早读</td>
+                    <td></td>
+                    <td>地理语文</td>
+                    <td>生物英语</td>
+                    <td>道法语文</td>
+                    <td>历史英语</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>数学</td>
+                    <td>语文</td>
+                    <td>生物</td>
+                    <td>英语</td>
+                    <td>地理</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>英语</td>
+                    <td>英语</td>
+                    <td>数学</td>
+                    <td>语文</td>
+                    <td>英语</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>语文</td>
+                    <td>数学</td>
+                    <td>英语</td>
+                    <td>音乐</td>
+                    <td>历史</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>生物</td>
+                    <td>历史</td>
+                    <td>体育</td>
+                    <td>数学</td>
+                    <td>语文</td>
+
+                </tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>午休</td>
+                <td></td>
+                <td></td>
+                <tr>
+                    <td>5</td>
+                    <td>美术</td>
+                    <td>道法</td>
+                    <td>语文</td>
+                    <td>心理</td>
+                    <td>生物</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>体育</td>
+                    <td>体育</td>
+                    <td>传文</td>
+                    <td>道法</td>
+                    <td>安全/环境</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>信息</td>
+                    <td>地理</td>
+                    <td>地理</td>
+                    <td>自习</td>
+                    <td>数学</td>
+                </tr>
+                <tr>
+                    <td>课后1</td>
+                    <td>班会</td>
+                    <td>体活</td>
+                    <td>英自</td>
+                    <td>语自</td>
+                    <td>自习</td>
+
+                </tr>
+                <tr>
+                    <td>课后2</td>
+                    <td>自习</td>
+                    <td>体活</td>
+                    <td>自习</td>
+                    <td>地/生自习</td>
+                    <td>数自</td>
+                </tr>
+            </table>
+            <div class="button-container">
+                <a href="https://www.hexfuture.net/index.html" class="button" target="_blank">十六进制课堂</a>
+                <a href="/name/" class="button" target="_blank">随机点名</a>
+                <a href="https://www.bing.com/" class="button" target="_blank">Bing搜索</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateSystemTime() {
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString();
+            document.getElementById('systemTime').textContent = `${formattedTime}`;
+        }
+        setInterval(updateSystemTime, 1000);
+        updateSystemTime();
+    </script>
+    <div class="footer">By ZZJ</div>
+</body>
+
+</html>
