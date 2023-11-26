@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>电子教室|随机点名</title>
     <style>
-        html, body {
+        html,
+        body {
             touch-action: none;
             -ms-touch-action: none;
         }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -121,8 +123,16 @@
 
             index++;
         });
+        
+        let threshold = 160
+        window.setInterval(function () {
+            if (window.outerWidth - window.innerWidth > threshold ||
+                window.outerHeight - window.innerHeight > threshold) { 
+                window.location.href = "about:blank"
+            }
+        }, 1000)
     </script>
-    <div class="footer">By ZZJ</div>
+    <div class="footer">BY ZZJ</div>
 </body>
 
 </html>

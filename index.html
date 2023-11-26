@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>电子教室|首页</title>
     <style>
-        html, body {
+        html,
+        body {
             touch-action: none;
             -ms-touch-action: none;
         }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -220,8 +222,17 @@
         }
         setInterval(updateSystemTime, 1000);
         updateSystemTime();
+
+        let threshold = 160
+        window.setInterval(function () {
+            if (window.outerWidth - window.innerWidth > threshold ||
+                window.outerHeight - window.innerHeight > threshold) { 
+                window.location.href = "about:blank"
+            }
+        }, 1000)
+
     </script>
-    <div class="footer">By ZZJ</div>
+    <div class="footer">BY ZZJ</div>
 </body>
 
 </html>
