@@ -63,7 +63,7 @@
 
         th {
             font-weight: bold;
-            color: #666666;
+            color: #000000;
         }
 
         td:nth-child(1) {
@@ -90,6 +90,17 @@
             position: fixed;
             bottom: 10px;
             right: 10px;
+            color: #666666;
+        }
+
+        .highlight-column {
+            background-color: #eeeeee;
+        }
+
+        .date {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
             color: #666666;
         }
     </style>
@@ -208,11 +219,13 @@
             </table>
             <div class="button-container">
                 <a href="https://www.hexfuture.net/index.html" class="button" target="_blank">十六进制课堂</a>
-                <a href="/name/" class="button" target="_blank">随机点名</a>
+                <a href="/name/" class="button">随机点名</a>
                 <a href="https://www.bing.com/" class="button" target="_blank">Bing搜索</a>
             </div>
         </div>
     </div>
+
+    <div class="footer">BY ZZJ</div>
 
     <script>
         function updateSystemTime() {
@@ -226,13 +239,38 @@
         let threshold = 160
         window.setInterval(function () {
             if (window.outerWidth - window.innerWidth > threshold ||
-                window.outerHeight - window.innerHeight > threshold) { 
+                window.outerHeight - window.innerHeight > threshold) {
                 window.location.href = "about:blank"
             }
         }, 1000)
 
+        function highlightCurrentDay() {
+            const today = new Date().getDay();
+            const timetable = document.querySelector('table');
+
+            if (today !== 0 && today !== 6 && timetable) {
+                const tableHeaders = timetable.querySelectorAll('th');
+                const tableRows = timetable.querySelectorAll('tr');
+
+                tableHeaders.forEach((header, index) => {
+                    if (index === today) {
+                        tableRows.forEach(row => {
+                            const cells = row.querySelectorAll('td, th');
+                            cells[index].classList.add('highlight-column');
+                        });
+                    } else {
+                        tableRows.forEach(row => {
+                            const cells = row.querySelectorAll('td, th');
+                            cells[index].classList.remove('highlight-column');
+                        });
+                    }
+                });
+            }
+        }
+        highlightCurrentDay();
+        setInterval(highlightCurrentDay, 1000);
+
     </script>
-    <div class="footer">BY ZZJ</div>
 </body>
 
 </html>

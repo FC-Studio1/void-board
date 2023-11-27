@@ -59,6 +59,22 @@
             right: 10px;
             color: #666666;
         }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 8px 12px;
+            font-size: 16px;
+            color: #444444;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #000000;
+        }
     </style>
     <script>
         document.onkeydown = function (event) {
@@ -77,6 +93,7 @@
             <p class="result" id="result">点击按钮开始</p>
             <button class="button" id="draw">抽取姓名</button>
         </div>
+        <a href="/" class="back-button">返回</a>
     </div>
     <script>
         var names = ["陈若涵", "陈雨睿", "董轶凡", "董玥含", "高菲儿", "高銘泽", "葛若曦", "扈金诺", "黄荻轩", "纪安瑞", "贾祎祯", "江浩瑜", "况子涵", "李本轩", "李明博", "李书琰", "林瑞志", "刘熙诺", "牟泽展", "平果儿", "秦绍航", "曲瑞涵", "曲智康", "孙清萱", "孙小涵", "王安睿", "王恩祺", "王峻康", "王晴楚", "王若茗", "王意瑶", "王子焕", "魏孟恩", "吴妙可", "邢越", "杨瀚俣", "杨越然", "杨梓童", "于航", "禹天心", "张峻恺", "张梓涵", "周煜皓", "朱梓骏", "祝仰岳", "邹沛辰"];
@@ -123,11 +140,11 @@
 
             index++;
         });
-        
+
         let threshold = 160
         window.setInterval(function () {
             if (window.outerWidth - window.innerWidth > threshold ||
-                window.outerHeight - window.innerHeight > threshold) { 
+                window.outerHeight - window.innerHeight > threshold) {
                 window.location.href = "about:blank"
             }
         }, 1000)
