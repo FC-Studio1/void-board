@@ -6,12 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>电子教室|首页</title>
     <style>
-        html,
-        body {
-            touch-action: none;
-            -ms-touch-action: none;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -21,6 +15,7 @@
         body {
             background: linear-gradient(to right, #f0f0f0, #e6e6e6);
             font-family: Arial, sans-serif;
+            user-select: none;
         }
 
         .container {
@@ -102,6 +97,43 @@
             bottom: 10px;
             left: 10px;
             color: #666666;
+        }
+
+        .timer-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .timer {
+            width: 80%;
+            max-width: 700px;
+            display: inline-block;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            font-size: 75px;
+            margin-bottom: 20px;
+        }
+
+        .timer-controls {
+            margin-top: 0px;
+        }
+
+        .timer-controls button {
+            padding: 15px 0;
+            margin: 0 5px;
+            border: none;
+            border-radius: 8px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            width: 15%;
+        }
+
+        .timer-controls button:hover {
+            background-color: #555;
         }
     </style>
     <script>
@@ -217,6 +249,7 @@
                     <td>数自</td>
                 </tr>
             </table>
+
             <div class="button-container">
                 <a href="https://www.hexfuture.net/index.html" class="button" target="_blank">十六进制课堂</a>
                 <a href="/name/" class="button">随机点名</a>
@@ -227,7 +260,31 @@
 
     <div class="footer">BY ZZJ</div>
 
+    <div class="timer-container">
+        <div class="timer">
+            <span id="timerDisplay">00:00</span>
+            <div class="timer-controls">
+                <div class="time-adjustment">
+                    <button onclick="decreaseMinute()">-</button>
+                    <button onclick="increaseMinute()">+</button>
+                    <button onclick="decreaseSecond()">-</button>
+                    <button onclick="increaseSecond()">+</button>
+                </div>
+                <div class="timer-actions">
+                    <button onclick="startTimer()">开 始</button>
+                    <button onclick="pauseTimer()">暂 停</button>
+                    <button onclick="stopTimer()">停止/重置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        let minutes = 0;
+        let seconds = 0;
+        let timer;
+        let timerRunning = false;
+
         function updateSystemTime() {
             const now = new Date();
             const formattedTime = now.toLocaleTimeString();
@@ -236,7 +293,7 @@
         setInterval(updateSystemTime, 1000);
         updateSystemTime();
 
-        let threshold = 160
+        let threshold = 500
         window.setInterval(function () {
             if (window.outerWidth - window.innerWidth > threshold ||
                 window.outerHeight - window.innerHeight > threshold) {
@@ -270,6 +327,69 @@
         highlightCurrentDay();
         setInterval(highlightCurrentDay, 1000);
 
+
+        function updateTimerDisplay() {
+            const formattedMinutes = String(minutes).padStart(2, '0');
+            const formattedSeconds = String(seconds).padStart(2, '0');
+            document.getElementById('timerDisplay').textContent = `${formattedMinutes}:${formattedSeconds}`;
+        }
+
+        function decreaseMinute() {
+            if (minutes > 0) {
+                minutes--;
+                updateTimerDisplay();
+            }
+        }
+
+        function increaseMinute() {
+            minutes++;
+            updateTimerDisplay();
+        }
+
+        function decreaseSecond() {
+            if (seconds > 0) {
+                seconds--;
+                updateTimerDisplay();
+            }
+        }
+
+        function increaseSecond() {
+            seconds++;
+            updateTimerDisplay();
+        }
+
+        function startTimer() {
+            if (!timerRunning) {
+                timer = setInterval(() => {
+                    if (seconds > 0) {
+                        seconds--;
+                    } else {
+                        if (minutes > 0) {
+                            minutes--;
+                            seconds = 59;
+                        } else {
+                            clearInterval(timer);
+                            timerRunning = false;
+                        }
+                    }
+                    updateTimerDisplay();
+                }, 1000);
+                timerRunning = true;
+            }
+        }
+
+        function pauseTimer() {
+            clearInterval(timer);
+            timerRunning = false;
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            minutes = 0;
+            seconds = 0;
+            updateTimerDisplay();
+            timerRunning = false;
+        }
     </script>
 </body>
 
