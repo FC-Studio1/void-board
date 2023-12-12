@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>电子教室|画板</title>
+    <link rel="stylesheet" href="/css/draw.css">
+
+    <script>
+        document.onkeydown = function (event) {
+            if (
+                event.keyCode == 123 || // F12
+                (event.ctrlKey && event.shiftKey && event.keyCode == 67) || // Ctrl+Shift+C
+                (event.ctrlKey && event.shiftKey && event.keyCode == 73) || // Ctrl+Shift+I
+                (event.ctrlKey && event.shiftKey && event.keyCode == 74) // Ctrl+Shift+J
+            ) {
+                return false;
+            }
+        };
+
+    </script>
+</head>
+
+<body oncontextmenu="return false;">
+    <canvas id="drawCanvas"></canvas>
+
+    <div id="controls">
+        <div style="display: flex;">
+            <div class="color-btn" id="black"></div>
+            <div class="color-btn" id="blue"></div>
+            <div class="color-btn" id="red"></div>
+        </div>
+        <button class="btn" id="clear">清空画布</button>
+    </div>
+
+    <a href="/" class="back-button">返回</a>
+
+    <script src="/js/draw.js"></script>
+</body>
+
+</html>

@@ -11,16 +11,30 @@ sudo vi nginx.conf //编辑配置文件
 请在nginx配置文件的http内插入如下内容
 ```conf
 server {
-        listen 端口号; //请在此处更改为你所要使用的端口号
-        server_name IP或域名; //改为你服务器的ip或指向你服务器的域名
-        root 静态文件目录; //修改为你存放静态文件的目录
-        location / {
-            index index.html;
-        }
-        location /name/ {
-            try_files $uri /name.html;
-        }
+    listen 端口号;
+    server_name IP或域名;
+    root 静态文件目录;
+
+    location / {
+        index index.html;
     }
+
+    location /name/ {
+        try_files $uri /name.html;
+    }
+
+    location /draw/ {
+        try_files $uri /draw.html;
+    }
+
+    location /css/ {
+        alias 静态文件目录/css/;
+    }
+
+    location /js/ {
+        alias 静态文件目录/js/;
+    }
+}
 ```
 为避免出现权限问题，建议修改配置文件首行为
 ```conf
