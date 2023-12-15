@@ -27,12 +27,8 @@ server {
         try_files $uri /draw.html;
     }
 
-    location /css/ {
-        alias 静态文件目录/css/;
-    }
-
-    location /js/ {
-        alias 静态文件目录/js/;
+    location /statics/ {
+        alias 静态文件目录/statics/;
     }
 }
 ```

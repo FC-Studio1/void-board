@@ -2,6 +2,25 @@ let minutes = 0;
 let seconds = 0;
 let timer;
 let timerRunning = false;
+let countdownEnded = false;
+const audioElement = new Audio('/statics/timeover.mp3');
+let touchStartY = 0;
+let touchMoveY = 0;
+
+document.addEventListener('touchstart', function (e) {
+    touchStartY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', function (e) {
+    touchMoveY = e.touches[0].clientY;
+    const deltaY = touchMoveY - touchStartY;
+
+    // 在这里模拟页面的滚动
+    window.scrollBy(0, -deltaY);
+
+    // 阻止默认滚动行为
+    e.preventDefault();
+});
 
 function updateSystemTime() {
     const now = new Date();
@@ -45,6 +64,28 @@ function highlightCurrentDay() {
 highlightCurrentDay();
 setInterval(highlightCurrentDay, 1000);
 
+function saveTimerData() {
+    const timerData = { minutes, seconds, timerRunning, countdownEnded };
+    sessionStorage.setItem('timerData', JSON.stringify(timerData));
+}
+
+function loadTimerData() {
+    const storedData = sessionStorage.getItem('timerData');
+    if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        minutes = parsedData.minutes;
+        seconds = parsedData.seconds;
+        timerRunning = parsedData.timerRunning;
+        countdownEnded = parsedData.countdownEnded;
+
+        // 根据加载的数据更新显示
+        updateTimerDisplay();
+        // 根据加载的数据继续计时
+        if (timerRunning && !(minutes === 0 && seconds === 0 && countdownEnded)) {
+            startTimer();
+        }
+    }
+}
 
 function updateTimerDisplay() {
     const formattedMinutes = String(minutes).padStart(2, '0');
@@ -93,17 +134,22 @@ function startTimer() {
                 } else {
                     clearInterval(timer);
                     timerRunning = false;
+                    countdownEnded = true; // 设置为true表示倒计时结束
+                    audioElement.play();
                 }
             }
+            saveTimerData();
             updateTimerDisplay();
         }, 1000);
         timerRunning = true;
+        countdownEnded = false;
     }
 }
 
 function pauseTimer() {
     clearInterval(timer);
     timerRunning = false;
+    saveTimerData();
 }
 
 function stopTimer() {
@@ -112,6 +158,9 @@ function stopTimer() {
     seconds = 0;
     updateTimerDisplay();
     timerRunning = false;
+    countdownEnded = false;
+    saveTimerData();
+    sessionStorage.removeItem('timerData');
 }
 
 function updateTimerDisplay() {
@@ -120,7 +169,7 @@ function updateTimerDisplay() {
     const timerDisplay = document.getElementById('timerDisplay');
     timerDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
 
-    if (formattedMinutes === '00' && formattedSeconds === '00') {
+    if (formattedMinutes === '00' && formattedSeconds === '00' && countdownEnded === false) {
         timerDisplay.style.color = 'red';
     } else {
         timerDisplay.style.color = 'black'; // Reset color if not 00:00
@@ -139,6 +188,6 @@ function scrollToTop() {
     // 使用原生的 JavaScript 获取顶部的位置，然后调用滚动函数
     window.scrollTo({
         top: 0,
-        behavior: 'smooth' // 这会使滚动具有平滑的动画效果，如果不需要动画可以将其删除
+        behavior: 'smooth' // 这会使滚动具有平滑的动画效果
     });
 }
