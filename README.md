@@ -15,6 +15,8 @@ server {
     server_name IP或域名;
     root 静态文件目录;
 
+    error_page 404 500 502 503 504 /error;
+
     location / {
         index index.html;
     }
@@ -25,6 +27,19 @@ server {
 
     location /draw/ {
         try_files $uri /draw.html;
+    }
+
+    location /author.html/ {
+        try_files $uri /author.html;
+    
+    }
+
+    location /error/ {
+        try_files $uri /error.html;
+    }
+
+    location /genshin/ {
+        try_files $uri /genshin.html;
     }
 
     location /statics/ {
