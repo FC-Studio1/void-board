@@ -1,33 +1,34 @@
 <html lang="zh">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
     <title>电子教室|随机点名</title>
-    <link rel="stylesheet" href="/statics/css/name.css">
-    <link rel="shortcut icon" href="/statics/icon.svg" type="image/x-icon">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/statics/css/name.css" />
+    <link rel="shortcut icon" href="/statics/icon.svg" type="image/x-icon" />
 
     <script>
-        document.onkeydown = function (event) {
-            if (event.keyCode == 123) {
-                return false;
-            } else if (event.ctrlKey && event.shiftKey && event.keyCode == 67) {
-                return false;
-            }
-        };
+      document.onkeydown = function (event) {
+        if (event.keyCode == 123) {
+          return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 67) {
+          return false;
+        }
+      };
     </script>
-</head>
+  </head>
 
-<body oncontextmenu="return false;">
+  <body oncontextmenu="return false;">
     <div class="container">
-        <div class="card">
-            <p class="result" id="result">点击按钮开始</p>
-            <button class="button" id="draw">抽取姓名</button>
-        </div>
-        <a href="/" class="back-button">返回</a>
+      <div class="card">
+        <p class="result" id="result">点击按钮开始</p>
+        <button class="button" id="draw">抽取姓名</button>
+      </div>
+      <a href="/" class="back-button">返回</a>
     </div>
     <script src="/statics/js/name.js"></script>
     <div class="footer">BY ZZJ</div>
-</body>
-
+  </body>
 </html>

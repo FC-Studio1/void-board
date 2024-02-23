@@ -19,44 +19,43 @@ sudo vi nginx.conf //编辑配置文件
 请在nginx配置文件的http内插入如下内容
 ```conf
 server {
-    listen 端口号;
-    server_name IP或域名;
-    root 静态文件目录;
+  listen 端口号;
+  server_name IP或域名;
+  root 静态文件目录;
 
-    error_page 404 500 502 503 504 /error;
+  error_page 404 500 502 503 504 /error;
 
-    location / {
-        index index.html;
-    }
+  location / {
+    index index.html;
+  }
 
-    location /name/ {
-        try_files $uri /name.html;
-    }
+  location /name/ {
+    try_files $uri /name.html;
+  }
 
-    location /timer/ {
-        try_files $uri /timer/dist/index.html;
-    }
+  location /timer/ {
+    try_files $uri /timer/dist/index.html;
+  }
 
-    location /draw/ {
-        try_files $uri /draw.html;
-    }
+  location /draw/ {
+    try_files $uri /draw.html;
+  }
 
-    location /author.html/ {
-        try_files $uri /author.html;
-    
-    }
+  location /author.html/ {
+    try_files $uri /author.html;
+  }
 
-    location /error/ {
-        try_files $uri /error.html;
-    }
+  location /error/ {
+    try_files $uri /error.html;
+  }
 
-    location /statics/ {
-        alias 静态文件目录/statics/;
-    }
+  location /statics/ {
+    alias 静态文件目录/statics/;
+  }
 
-    location /assets/ {
-        alias 静态文件目录/timer/dist/assets/;
-    }
+  location /assets/ {
+    alias 静态文件目录/timer/dist/assets/;
+  }
 }
 ```
 为避免出现权限问题，建议修改配置文件首行为

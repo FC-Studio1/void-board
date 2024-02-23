@@ -1,160 +1,166 @@
 <!DOCTYPE html>
 <html lang="zh">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
     <title>电子教室|首页</title>
-    <link rel="stylesheet" href="/statics/css/index.css">
-    <link rel="shortcut icon" href="/statics/icon.svg" type="image/x-icon">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/statics/css/index.css" />
+    <link rel="shortcut icon" href="/statics/icon.svg" type="image/x-icon" />
 
     <script>
-        document.onkeydown = function (event) {
-            if (
-                event.keyCode == 123 || // F12
-                (event.ctrlKey && event.shiftKey && event.keyCode == 67) || // Ctrl+Shift+C
-                (event.ctrlKey && event.shiftKey && event.keyCode == 73) || // Ctrl+Shift+I
-                (event.ctrlKey && event.shiftKey && event.keyCode == 74) // Ctrl+Shift+J
-            ) {
-                return false;
-            }
-        };
-
+      document.onkeydown = function (event) {
+        if (
+          event.keyCode == 123 || // F12
+          (event.ctrlKey && event.shiftKey && event.keyCode == 67) || // Ctrl+Shift+C
+          (event.ctrlKey && event.shiftKey && event.keyCode == 73) || // Ctrl+Shift+I
+          (event.ctrlKey && event.shiftKey && event.keyCode == 74) // Ctrl+Shift+J
+        ) {
+          return false;
+        }
+      };
     </script>
-</head>
+  </head>
 
-<body oncontextmenu="return false;">
+  <body oncontextmenu="return false;">
     <div class="container">
-        <div class="header" id="systemTime"></div>
-        <div class="card">
-            <table>
-                <tr>
-                    <th>节次</th>
-                    <th>周一</th>
-                    <th>周二</th>
-                    <th>周三</th>
-                    <th>周四</th>
-                    <th>周五</th>
-                </tr>
-                <tr>
-                    <td>早读</td>
-                    <td></td>
-                    <td>地理语文</td>
-                    <td>生物英语</td>
-                    <td>道法语文</td>
-                    <td>历史英语</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>数学</td>
-                    <td>语文</td>
-                    <td>生物</td>
-                    <td>英语</td>
-                    <td>地理</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>英语</td>
-                    <td>英语</td>
-                    <td>数学</td>
-                    <td>语文</td>
-                    <td>英语</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>语文</td>
-                    <td>数学</td>
-                    <td>英语</td>
-                    <td>音乐</td>
-                    <td>历史</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>生物</td>
-                    <td>历史</td>
-                    <td>体育</td>
-                    <td>数学</td>
-                    <td>语文</td>
-
-                </tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>午休</td>
-                <td></td>
-                <td></td>
-                <tr>
-                    <td>5</td>
-                    <td>美术</td>
-                    <td>道法</td>
-                    <td>语文</td>
-                    <td>心理</td>
-                    <td>生物</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>体育</td>
-                    <td>体育</td>
-                    <td>传文</td>
-                    <td>道法</td>
-                    <td>安全/环境</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>信息</td>
-                    <td>地理</td>
-                    <td>地理</td>
-                    <td>自习</td>
-                    <td>数学</td>
-                </tr>
-                <tr>
-                    <td>课后1</td>
-                    <td>班会</td>
-                    <td>体活</td>
-                    <td>英自</td>
-                    <td>语自</td>
-                    <td>自习</td>
-
-                </tr>
-                <tr>
-                    <td>课后2</td>
-                    <td>自习</td>
-                    <td>体活</td>
-                    <td>自习</td>
-                    <td>地/生自习</td>
-                    <td>数自</td>
-                </tr>
-            </table>
-            <div class="button-container">
-                <a href="/name/" class="button">随机点名</a>
-                <a href="/draw/" class="button">画板</a>
-                <a onclick="scrollToBottom()" class="button">计时器</button>
-                <a href="/timer/" class="button" target="_blank">辩论计时</a>
-                <a href="https://www.bing.com/" class="button" target="_blank">Bing搜索</a>
-                <a href="https://inclass.hexfuture.net/" class="button" target="_blank">十六进制课堂</a>
-            </div>
+      <div class="header" id="systemTime"></div>
+      <div class="card">
+        <table>
+          <tr>
+            <th>节次</th>
+            <th>周一</th>
+            <th>周二</th>
+            <th>周三</th>
+            <th>周四</th>
+            <th>周五</th>
+          </tr>
+          <tr>
+            <td>早读</td>
+            <td></td>
+            <td>地理语文</td>
+            <td>生物英语</td>
+            <td>道法语文</td>
+            <td>历史英语</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>数学</td>
+            <td>语文</td>
+            <td>生物</td>
+            <td>英语</td>
+            <td>地理</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>英语</td>
+            <td>英语</td>
+            <td>数学</td>
+            <td>语文</td>
+            <td>英语</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>语文</td>
+            <td>数学</td>
+            <td>英语</td>
+            <td>音乐</td>
+            <td>历史</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>生物</td>
+            <td>历史</td>
+            <td>体育</td>
+            <td>数学</td>
+            <td>语文</td>
+          </tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>午休</td>
+          <td></td>
+          <td></td>
+          <tr>
+            <td>5</td>
+            <td>美术</td>
+            <td>道法</td>
+            <td>语文</td>
+            <td>心理</td>
+            <td>生物</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>体育</td>
+            <td>体育</td>
+            <td>传文</td>
+            <td>道法</td>
+            <td>安全/环境</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>信息</td>
+            <td>地理</td>
+            <td>地理</td>
+            <td>自习</td>
+            <td>数学</td>
+          </tr>
+          <tr>
+            <td>课后1</td>
+            <td>班会</td>
+            <td>体活</td>
+            <td>英自</td>
+            <td>语自</td>
+            <td>自习</td>
+          </tr>
+          <tr>
+            <td>课后2</td>
+            <td>自习</td>
+            <td>体活</td>
+            <td>自习</td>
+            <td>地/生自习</td>
+            <td>数自</td>
+          </tr>
+        </table>
+        <div class="button-container">
+          <a href="/name/" class="button">随机点名</a>
+          <a href="/draw/" class="button">画板</a>
+          <a onclick="scrollToBottom()" class="button">计时器</a>
+          <a href="/timer/" class="button" target="_blank">辩论计时</a>
+          <a href="https://www.bing.com/" class="button" target="_blank"
+            >Bing搜索</a
+          >
+          <a
+            href="https://inclass.hexfuture.net/"
+            class="button"
+            target="_blank"
+            >十六进制课堂</a
+          >
         </div>
+      </div>
     </div>
 
     <div class="footer">BY ZZJ</div>
 
     <div class="timer-container">
-        <div class="timer">
-            <span id="timerDisplay" style="color: red;">00:00</span>
-            <div class="timer-controls">
-                <div class="time-adjustment">
-                    <button onclick="increaseMinute()">+</button>
-                    <button onclick="decreaseMinute()">-</button>
-                    <button onclick="increaseSecond()">+</button>
-                    <button onclick="decreaseSecond()">-</button>
-                </div>
-                <div class="timer-actions">
-                    <button onclick="startTimer()">开始</button>
-                    <button onclick="pauseTimer()">暂停</button>
-                    <button onclick="stopTimer()">重置</button>
-                </div>
-            </div>
+      <div class="timer">
+        <span id="timerDisplay" style="color: red">00:00</span>
+        <div class="timer-controls">
+          <div class="time-adjustment">
+            <button onclick="increaseMinute()">+</button>
+            <button onclick="decreaseMinute()">-</button>
+            <button onclick="increaseSecond()">+</button>
+            <button onclick="decreaseSecond()">-</button>
+          </div>
+          <div class="timer-actions">
+            <button onclick="startTimer()">开始</button>
+            <button onclick="pauseTimer()">暂停</button>
+            <button onclick="stopTimer()">重置</button>
+          </div>
         </div>
+      </div>
     </div>
 
     <a onclick="scrollToTop()" class="back-button">返回</a>
@@ -162,6 +168,5 @@
     <audio id="audioElement" src="/statics/timeover.mp3" preload="auto"></audio>
 
     <script src="/statics/js/index.js"></script>
-</body>
-
+  </body>
 </html>
