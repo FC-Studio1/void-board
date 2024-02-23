@@ -1,7 +1,15 @@
 # 电子教室
 ## 配置方法
 1. 将电子教室完整的置于服务器的一个目录下
-2. 配置nginx(务必保证服务器已安装nginx)
+2. 构建计时器应用
+在项目目录下打开终端
+```bash
+cd timer
+yarn
+yarn build
+```
+若timer目录下多出一个dist文件夹，则成功构建
+1. 配置nginx(务必保证服务器已安装nginx)
 ```bash
 sudo systemctl start nginx //启动nginx
 sudo systemctl status nginx //运行状态
@@ -25,6 +33,10 @@ server {
         try_files $uri /name.html;
     }
 
+    location /timer/ {
+        try_files $uri /timer/dist/index.html;
+    }
+
     location /draw/ {
         try_files $uri /draw.html;
     }
@@ -38,12 +50,12 @@ server {
         try_files $uri /error.html;
     }
 
-    location /genshin/ {
-        try_files $uri /genshin.html;
-    }
-
     location /statics/ {
         alias 静态文件目录/statics/;
+    }
+
+    location /assets/ {
+        alias 静态文件目录/timer/dist/assets/;
     }
 }
 ```
